@@ -1,9 +1,7 @@
 public class Main {
     public static void main(String args[]) {
-        try {
-            Servise.start("Вася","Витя");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+       Servise servise=new Servise("in.txt","Вася","Витя","out.txt");
+       servise.begin();
+
     }
 }
