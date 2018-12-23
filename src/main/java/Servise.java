@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -7,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Servise {
-    public static void start(String what, String forWhat) throws Exception {
+    public static void start(String what, String forWhat) throws IOException {
         String[] wordsStart = Files.lines(Paths.get("in.txt"), StandardCharsets.UTF_8).
                 collect(Collectors.toList()).get(0).split(" ");
         List<String> wordsEnd = Arrays.asList(wordsStart).stream().map(n -> change(n, what, forWhat)).
@@ -17,7 +18,7 @@ public class Servise {
         Files.write(Paths.get("out.txt"), a.getBytes("utf-8"));
     }
 
-    public static String change(String a, String what, String forWhat) {
+    private static String change(String a, String what, String forWhat) {
         if (a.contains(what)) {
             int f = a.indexOf(what);
             int to = f + what.length();
